@@ -1,19 +1,35 @@
 package tests;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import pages.IndexPage;
+import pages.LoginPage;
+import pages.MyAccountPage;
+
 public class TestBase {
 	WebDriver driver;
+	IndexPage indexPage;
+	LoginPage loginPage;
+	MyAccountPage myAccountPage;
+	ExcelReader excelReader;
 	
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClass() throws IOException {
 		System.setProperty("webdriver.chrome.driver",
 				"driver-lib\\chromedriver.exe");
 		
 		this.driver = new ChromeDriver();
+		this.indexPage = new IndexPage(driver);
+		this.loginPage = new LoginPage (driver);
+		this.myAccountPage = new MyAccountPage(driver);
+		this.excelReader = new ExcelReader("data\\testPlan.xlsx");
+		
+
 		driver.manage().window().maximize();
 	}
 	@AfterClass
