@@ -7,15 +7,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import pages.AddressFormPage;
 import pages.IndexPage;
 import pages.LoginPage;
 import pages.MyAccountPage;
+import pages.MyAddressesPage;
 
 public class TestBase {
 	WebDriver driver;
 	IndexPage indexPage;
 	LoginPage loginPage;
 	MyAccountPage myAccountPage;
+	MyAddressesPage myAddressesPage;
+	AddressFormPage addressFormPage;
 	ExcelReader excelReader;
 	
 	@BeforeClass
@@ -27,6 +31,8 @@ public class TestBase {
 		this.indexPage = new IndexPage(driver);
 		this.loginPage = new LoginPage (driver);
 		this.myAccountPage = new MyAccountPage(driver);
+		this.myAddressesPage = new MyAddressesPage(driver);
+		this.addressFormPage = new AddressFormPage(driver);
 		this.excelReader = new ExcelReader("data\\testPlan.xlsx");
 		
 
