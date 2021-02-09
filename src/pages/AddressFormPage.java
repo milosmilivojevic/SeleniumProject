@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class AddressFormPage {
 	WebDriver driver;
@@ -11,7 +12,10 @@ public class AddressFormPage {
 	WebElement addressInputField;
 	WebElement cityInputField;
 	WebElement postalCodeInputField;
+	WebElement mobilePhoneInputField;
+	WebElement addressTitle;
 	WebElement saveButton;
+	Select stateDropdownMenu = new Select(driver.findElement(By.id("id_state")));
 
 	public AddressFormPage(WebDriver driver) {
 		this.driver = driver;
@@ -36,6 +40,13 @@ public class AddressFormPage {
 	public WebElement getPostalCodeInputField() {
 		return driver.findElement(By.id("postcode"));
 	}
+	public WebElement getMobilePhoneInputField() {
+		return driver.findElement(By.id("phone_mobile"));
+	}
+	
+	public WebElement getAddressTitle() {
+		return driver.findElement(By.id("alias"));
+	}
 
 	public WebElement getSaveButton() {
 		return driver.findElement(By.id("submitAddress"));
@@ -52,6 +63,9 @@ public class AddressFormPage {
 		this.getAddressInputField().clear();
 		this.getAddressInputField().sendKeys(address);
 	}
+	public void selectState(String state) {
+		stateDropdownMenu.selectByVisibleText(state);
+	}
 	public void enterCity(String city) {
 		this.getCityInputField().clear();
 		this.getCityInputField().sendKeys(city);
@@ -59,6 +73,14 @@ public class AddressFormPage {
 	public void enterPostalCode(String postalCode) {
 		this.getPostalCodeInputField().clear();
 		this.getPostalCodeInputField().sendKeys(postalCode);
+	}
+	public void enterMobilePhoneNumber(String mobilePhoneNumber) {
+		this.getPostalCodeInputField().clear();
+		this.getPostalCodeInputField().sendKeys(mobilePhoneNumber);
+	}
+	public void enterAddressTitle(String addressTitle) {
+		this.getAddressTitle().clear();
+		this.getAddressTitle().sendKeys(addressTitle);
 	}
 	public void clickSaveButton() {
 		this.getSaveButton().click();

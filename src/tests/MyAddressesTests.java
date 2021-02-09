@@ -12,7 +12,7 @@ public class MyAddressesTests extends TestBase{
 		driver.navigate().to("http://automationpractice.com/index.php");
 		Thread.sleep(2000);
 	}
-	@Test (priority = 0)
+	//@Test (priority = 0)
 	private void updateAddress() throws InterruptedException {
 		String email = excelReader.getData("Valid credentials", 4, 8);
 		String password = excelReader.getData("Valid credentials", 5, 8);

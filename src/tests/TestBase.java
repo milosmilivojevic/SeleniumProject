@@ -12,6 +12,8 @@ import pages.IndexPage;
 import pages.LoginPage;
 import pages.MyAccountPage;
 import pages.MyAddressesPage;
+import pages.PersonalInfoPage;
+import pages.WishlistPage;
 
 public class TestBase {
 	WebDriver driver;
@@ -20,12 +22,14 @@ public class TestBase {
 	MyAccountPage myAccountPage;
 	MyAddressesPage myAddressesPage;
 	AddressFormPage addressFormPage;
+	WishlistPage wishlistPage;
+	PersonalInfoPage personalInfoPage;
 	ExcelReader excelReader;
 	
 	@BeforeClass
 	public void beforeClass() throws IOException {
-		System.setProperty("webdriver.chrome.driver",
-				"driver-lib\\chromedriver.exe");
+		
+		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");
 		
 		this.driver = new ChromeDriver();
 		this.indexPage = new IndexPage(driver);
@@ -33,9 +37,10 @@ public class TestBase {
 		this.myAccountPage = new MyAccountPage(driver);
 		this.myAddressesPage = new MyAddressesPage(driver);
 		this.addressFormPage = new AddressFormPage(driver);
+		this.wishlistPage = new WishlistPage(driver);
+		this.personalInfoPage = new PersonalInfoPage(driver);
 		this.excelReader = new ExcelReader("data\\testPlan.xlsx");
 		
-
 		driver.manage().window().maximize();
 	}
 	@AfterClass
