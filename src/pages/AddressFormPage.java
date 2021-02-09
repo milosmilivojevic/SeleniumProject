@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Select;  
 
 public class AddressFormPage {
 	WebDriver driver;
@@ -15,39 +15,31 @@ public class AddressFormPage {
 	WebElement mobilePhoneInputField;
 	WebElement addressTitle;
 	WebElement saveButton;
-	Select stateDropdownMenu = new Select(driver.findElement(By.id("id_state")));
-
+	
 	public AddressFormPage(WebDriver driver) {
 		this.driver = driver;
 	}
-
 	public WebElement getFirstNameInputField() {
 		return driver.findElement(By.id("firstname"));
 	}
-
 	public WebElement getLastNameInputField() {
 		return driver.findElement(By.id("lastname"));
 	}
-
 	public WebElement getAddressInputField() {
 		return driver.findElement(By.id("address1"));
 	}
-
 	public WebElement getCityInputField() {
 		return driver.findElement(By.id("city"));
 	}
-
 	public WebElement getPostalCodeInputField() {
 		return driver.findElement(By.id("postcode"));
 	}
 	public WebElement getMobilePhoneInputField() {
 		return driver.findElement(By.id("phone_mobile"));
 	}
-	
 	public WebElement getAddressTitle() {
 		return driver.findElement(By.id("alias"));
 	}
-
 	public WebElement getSaveButton() {
 		return driver.findElement(By.id("submitAddress"));
 	}
@@ -63,8 +55,10 @@ public class AddressFormPage {
 		this.getAddressInputField().clear();
 		this.getAddressInputField().sendKeys(address);
 	}
+	
 	public void selectState(String state) {
-		stateDropdownMenu.selectByVisibleText(state);
+		Select stateDropdown = new Select(driver.findElement(By.id("id_state")));
+		stateDropdown.selectByVisibleText(state);
 	}
 	public void enterCity(String city) {
 		this.getCityInputField().clear();
@@ -74,9 +68,9 @@ public class AddressFormPage {
 		this.getPostalCodeInputField().clear();
 		this.getPostalCodeInputField().sendKeys(postalCode);
 	}
-	public void enterMobilePhoneNumber(String mobilePhoneNumber) {
-		this.getPostalCodeInputField().clear();
-		this.getPostalCodeInputField().sendKeys(mobilePhoneNumber);
+	public void enterMobilePhoneNumber(int mobilePhoneNumber) {
+		this.getMobilePhoneInputField().clear();
+		this.getMobilePhoneInputField().sendKeys(String.valueOf(mobilePhoneNumber));
 	}
 	public void enterAddressTitle(String addressTitle) {
 		this.getAddressTitle().clear();

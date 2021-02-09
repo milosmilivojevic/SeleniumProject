@@ -16,7 +16,7 @@ public class IndexPage {
 		return driver.findElement(By.className("login"));
 	}
 
-	public void clickSingInButton() {
+	public void clickSignInButton() {
 		this.getSignInButton().click();
 	}
 

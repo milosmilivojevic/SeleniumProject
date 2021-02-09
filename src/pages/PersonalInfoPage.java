@@ -6,14 +6,26 @@ import org.openqa.selenium.WebElement;
 
 public class PersonalInfoPage {
 	WebDriver driver;
+	WebElement mrRadioButton;
+	WebElement mrsRadioButton;
 	WebElement firstNameInputField;
 	WebElement lastNameInputField;
 	WebElement emailInputField;
 	WebElement currentPasswordInputField;
+	WebElement newPasswordInputField;
+	WebElement newsletterCheckbox;
 	WebElement saveButton;
 
 	public PersonalInfoPage(WebDriver driver) {
 		this.driver = driver;
+	}
+	// Getters
+	
+	public WebElement getMrRadioButton() {
+		return driver.findElement(By.id("id_gender1"));
+	}
+	public WebElement getMrsRadioButton() {
+		return driver.findElement(By.id("id_gender2"));
 	}
 	public WebElement getFirstNameInputField() {
 		return driver.findElement(By.id("firstname"));
@@ -27,8 +39,23 @@ public class PersonalInfoPage {
 	public WebElement getCurrentPasswordInputField() {
 		return driver.findElement(By.id("old_passwd"));
 	}
+	public WebElement getNewPasswordInputField() {
+		return driver.findElement(By.id("passwd"));
+	}
 	public WebElement getSaveButton() {
 		return driver.findElement(By.name("submitIdentity"));
+	}
+	
+	//Methods
+	
+	public void clickMrRadioButton() {
+		this.getMrRadioButton().click();
+	}
+	public void clickMrsRadioButton() {
+		this.getMrsRadioButton().click();
+	}
+	public WebElement getNewsletterCheckbox() {
+		return driver.findElement(By.id("newsletter"));
 	}
 	public void enterFirstName(String firstName) {
 		this.getFirstNameInputField().clear();
@@ -45,6 +72,13 @@ public class PersonalInfoPage {
 	public void enterCurrentPassword(String currentPassword) {
 		this.getCurrentPasswordInputField().clear();
 		this.getCurrentPasswordInputField().sendKeys(currentPassword);
+	}
+	public void enterNewPassword(String newPassword) {
+		this.getNewPasswordInputField().clear();
+		this.getNewPasswordInputField().sendKeys(newPassword);
+	}
+	public void checkNewsletterBox() {
+		this.getNewsletterCheckbox().click();
 	}
 	public void clickSaveButton() {
 		this.getSaveButton().click();

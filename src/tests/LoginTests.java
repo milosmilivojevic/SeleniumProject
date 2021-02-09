@@ -55,14 +55,5 @@ public class LoginTests extends TestBase{
 		Thread.sleep(2000);
 	}
 	
-	public void signIn(String email, String password) throws InterruptedException {
-		indexPage.clickSingInButton();
-		Thread.sleep(1500);
-		loginPage.enterEmail(email);
-		Thread.sleep(1500);
-		loginPage.enterPassword(password);
-		Thread.sleep(1500);
-		loginPage.clickSignInButton();
-		Thread.sleep(2000);
-	}
+
 }

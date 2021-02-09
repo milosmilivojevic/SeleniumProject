@@ -16,7 +16,11 @@ import pages.PersonalInfoPage;
 import pages.WishlistPage;
 
 public class TestBase {
+	
 	WebDriver driver;
+	
+	//Pages
+	
 	IndexPage indexPage;
 	LoginPage loginPage;
 	MyAccountPage myAccountPage;
@@ -25,11 +29,20 @@ public class TestBase {
 	WishlistPage wishlistPage;
 	PersonalInfoPage personalInfoPage;
 	ExcelReader excelReader;
+
+	
+	public void signIn(String email, String password) throws InterruptedException {
+		indexPage.clickSignInButton();
+		loginPage.enterEmail(email);
+		loginPage.enterPassword(password);
+		loginPage.clickSignInButton();
+	}
 	
 	@BeforeClass
 	public void beforeClass() throws IOException {
 		
-		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",
+				"driver-lib\\chromedriver.exe");
 		
 		this.driver = new ChromeDriver();
 		this.indexPage = new IndexPage(driver);
@@ -45,7 +58,7 @@ public class TestBase {
 	}
 	@AfterClass
 	public void afterClass() {
-		driver.close();
+		//driver.close();
 	}
 }
 

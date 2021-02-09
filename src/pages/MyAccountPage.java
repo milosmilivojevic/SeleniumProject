@@ -11,17 +11,17 @@ public class MyAccountPage {
 	WebElement myPersonalInformationButton;
 	WebElement myWishlistButton;
 
-	
 	public MyAccountPage(WebDriver driver) {
 		this.driver = driver;
 	}
+	
+	// Getters
+	
 	public WebElement getSignOutButton() {
 		return driver.findElement(By.className("logout"));
 	}
-	
 	public WebElement getMyAddressesButton() {
 		return driver.findElement(By.className("icon-building"));
-		
 	}
 	public WebElement getMyPersonalInformationButton() {
 		return driver.findElement(By.className("icon-user"));
@@ -29,13 +29,16 @@ public class MyAccountPage {
 	public WebElement getMyWishlistButton() {
 		return driver.findElement(By.className("icon-heart"));
 	}
+	
+	// Methods
+	
 	public void clickMyAddressesButton() {
 		this.getMyAddressesButton().click();
 	}
 	public void clickMyPersonalInformationButton() {
 		this.getMyPersonalInformationButton().click();
 	}
-	public void clicMyWishlistButton() {
+	public void clickMyWishlistButton() {
 		this.getMyWishlistButton().click();
 	}
 	public void clickSignOutButton() {
