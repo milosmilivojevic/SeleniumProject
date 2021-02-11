@@ -31,6 +31,12 @@ public class TestBase {
 	ExcelReader excelReader;
 
 	
+	public void signIn() throws InterruptedException {
+		indexPage.clickSignInButton();
+		loginPage.enterEmail(excelReader.getData("Login tests", 5, 6));
+		loginPage.enterPassword(excelReader.getData("Login tests", 6, 6));
+		loginPage.clickSignInButton();
+	}
 	public void signIn(String email, String password) throws InterruptedException {
 		indexPage.clickSignInButton();
 		loginPage.enterEmail(email);

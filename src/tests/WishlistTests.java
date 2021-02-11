@@ -18,11 +18,9 @@ public class WishlistTests extends TestBase{
 	}
 	//@Test (priority = 0)
 	public void addWishlist() throws InterruptedException {
-		String email = excelReader.getData("Valid credentials", 4, 8);
-		String password = excelReader.getData("Valid credentials", 5, 8);
-		String wishlistName = "lista";      // excelReader.getData("add wishlist", 4, 8);
+		String wishlistName = excelReader.getData("Wishlist tests", 3, 6);
 		
-		signIn(email, password);
+		signIn();
 		myAccountPage.clickMyWishlistButton();
 		Thread.sleep(1500);
 		wishlistPage.enterWishlistName(wishlistName);
@@ -34,21 +32,23 @@ public class WishlistTests extends TestBase{
 	}
 	@Test (priority = 1)
 	public void addMultipleWishlists() throws InterruptedException {
-		String wishlistName = "lista1";      // excelReader.getData("add wishlist", 4, 8);
+		String wishlistName = excelReader.getData("Wishlist tests", 3, 6);
 		int numberOfWishlists = 3;
 		
-		addWishlist();
-		/*
+		signIn();
+		myAccountPage.clickMyWishlistButton();
+		Thread.sleep(1500);
+		
 		for (int i = 0; i < numberOfWishlists; i++) {
 			wishlistPage.enterWishlistName(wishlistName+i);
 			wishlistPage.clickSaveButton();
 		}
-		*/
+		
 		wishlistPage.enterWishlistName(wishlistName);
 		wishlistPage.clickSaveButton();
 		
 		//Assert.assertEquals(, );
-		//wishlistPage.removeLists();
+		wishlistPage.removeLists();
 	}
 	//@Test (priority = 2)
 	public void removeWishlists() throws InterruptedException {

@@ -13,34 +13,50 @@ public class LoginTests extends TestBase{
 		driver.navigate().to("http://automationpractice.com/index.php");
 		Thread.sleep(2000);
 	}
-	@Test (priority = 0)
+	@Test 
 	public void loginWithValidCredentials() throws InterruptedException {
-		String email = excelReader.getData("Valid credentials", 4, 8);
-		String password = excelReader.getData("Valid credentials", 5, 8);
-		
-		signIn(email, password);
+
+		signIn();
 		
 		Assert.assertEquals(true, myAccountPage.getSignOutButton().isDisplayed());
 	}
-	@Test (priority = 1)
+	@Test 
+	public void loginWithInvalidPassword() throws InterruptedException {
+		String email = excelReader.getData("Login tests", 13, 6);
+		String password = excelReader.getData("Login tests", 14, 6);
+		
+		signIn(email, password);
+		
+		Assert.assertEquals(true, loginPage.getSignInButton().isDisplayed());
+	}
+	@Test 
+	public void loginWithInvalidEmail() throws InterruptedException {
+		String email = excelReader.getData("Login tests", 21, 6);
+		String password = excelReader.getData("Login tests", 22, 6);
+		
+		signIn(email, password);
+		
+		Assert.assertEquals(true, loginPage.getSignInButton().isDisplayed());
+	}
+	@Test 
 	public void loginWithInvalidCredentials() throws InterruptedException {
-		String email = excelReader.getData("Invalid credentials", 4, 8);
-		String password = excelReader.getData("Invalid credentials", 5, 8);
+		String email = excelReader.getData("Login tests", 29, 6);
+		String password = excelReader.getData("Login tests", 30, 6);
 		
 		signIn(email, password);
 		
 		Assert.assertEquals(true, loginPage.getSignInButton().isDisplayed());
 	}
-	@Test (priority = 2)
+	@Test 
 	public void loginWithEmptyCredentials() throws InterruptedException {
-		String email = excelReader.getData("Empty credentials", 4, 8);
-		String password = excelReader.getData("Empty credentials", 5, 8);
+		String email = "";
+		String password = "";
 		
 		signIn(email, password);
 		
 		Assert.assertEquals(true, loginPage.getSignInButton().isDisplayed());
 	}
-	@Test (priority = 3)
+	@Test 
 	public void logout() throws InterruptedException {
 		loginWithValidCredentials();
 		Thread.sleep(1500);

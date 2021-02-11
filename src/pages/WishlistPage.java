@@ -25,8 +25,8 @@ public class WishlistPage {
 	
 	public String textForAssert() {
 		return String.valueOf(driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div[2]/div/div[1]/table/tbody/tr/td[1]")).getText());
-
 	}
+	
 	public void enterWishlistName(String wishlistName) {
 		driver.findElement(By.id("name")).sendKeys(wishlistName);
 	}
@@ -42,5 +42,8 @@ public class WishlistPage {
 			}
 		}
 	}
-	
+	public int numberOfWishlists() {
+		List<WebElement> wishlists = driver.findElements(By.xpath("/tr[starts-with(@id ,'wishlist')]"));
+		return wishlists.size();
+	}
 }

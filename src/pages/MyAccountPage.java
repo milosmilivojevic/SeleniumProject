@@ -15,7 +15,6 @@ public class MyAccountPage {
 		this.driver = driver;
 	}
 	
-	// Getters
 	
 	public WebElement getSignOutButton() {
 		return driver.findElement(By.className("logout"));
@@ -30,7 +29,6 @@ public class MyAccountPage {
 		return driver.findElement(By.className("icon-heart"));
 	}
 	
-	// Methods
 	
 	public void clickMyAddressesButton() {
 		this.getMyAddressesButton().click();
