@@ -7,20 +7,26 @@ import org.testng.annotations.Test;
 
 
 public class MyAddressesTests extends TestBase{
+	private String address;
+	private String city;
+	private String state;
+	private String postalCode;
+	private int mobilePhoneNumber;
+	private String addressTitle;
 	
 	@BeforeMethod
 	public void setup() throws InterruptedException {
 		driver.navigate().to("http://automationpractice.com/index.php");
 		Thread.sleep(2000);
 	}
-	@Test 
+	@Test (priority = 0)
 	public void updateAddress() throws InterruptedException {
-		String address = excelReader.getData("Add address", 7, 8);
-		String city = excelReader.getData("Add address", 8, 8);
-		String state = excelReader.getData("Add address", 9, 8);
-		String postalCode = excelReader.getData("Add address", 10, 8);
-		int mobilePhoneNumber = Integer.valueOf(excelReader.getData("Add address", 11, 8));
-		String addressTitle = excelReader.getData("Add address", 12, 8);
+		address = excelReader.getData("Address tests", 15, 6);
+		city = excelReader.getData("Address tests", 16, 6);
+		state = excelReader.getData("Address tests", 17, 6);
+		postalCode = excelReader.getData("Address tests", 18, 6);
+		mobilePhoneNumber = Integer.valueOf(excelReader.getData("Address tests", 19, 6));
+		addressTitle = excelReader.getData("Address tests", 20, 6);
 
 		signIn();
 		Thread.sleep(1500);
@@ -42,14 +48,14 @@ public class MyAddressesTests extends TestBase{
 			revertToOldAddress();
 		
 	}
-	@Test 
+	@Test (priority = 5)
 	public void addNewAddress() throws InterruptedException {
-		String address = excelReader.getData("Address tests", 4, 6);
-		String city = excelReader.getData("Address tests", 5, 6);
-		String state = excelReader.getData("Address tests", 6, 6);
-		String postalCode = excelReader.getData("Address tests", 7, 6);
-		int mobilePhoneNumber = Integer.valueOf(excelReader.getData("Address tests", 8, 6));
-		String addressTitle = excelReader.getData("Address tests", 9, 6);
+		address = excelReader.getData("Address tests", 4, 6);
+		city = excelReader.getData("Address tests", 5, 6);
+		state = excelReader.getData("Address tests", 6, 6);
+		postalCode = excelReader.getData("Address tests", 7, 6);
+		mobilePhoneNumber = Integer.valueOf(excelReader.getData("Address tests", 8, 6));
+		addressTitle = excelReader.getData("Address tests", 9, 6);
 		
 		signIn();
 		myAccountPage.clickMyAddressesButton();
@@ -62,50 +68,43 @@ public class MyAddressesTests extends TestBase{
 		String actualText = myAddressesPage.getSecondAddressLabel().getText().toUpperCase();
 		String expectedText = addressTitle.toUpperCase();
 		Assert.assertEquals(actualText, expectedText);
-		
-		myAddressesPage.deleteSecondAddress();
 	}
 	
-	//@Test (priority = 2)
+	@Test (priority = 10)
 	public void deleteAddress() throws InterruptedException {
 		signIn();
 		Thread.sleep(1500);
 		myAccountPage.clickMyAddressesButton();
 		Thread.sleep(1500);
-		if (myAddressesPage.getDeleteButton().isDisplayed()) 
-			myAddressesPage.deleteAddress();
+		if (myAddressesPage.getDeleteSecondAddressButton().isDisplayed())
+		myAddressesPage.deleteSecondAddress();
 		Thread.sleep(1500);
-		myAddressesPage.clickAddANewAddressButton();
-		//fillInAddressForm(address, city, state, postalCode, mobilePhoneNumber, addressTitle);
+		
+		Assert.assertTrue(myAddressesPage.numberOfAddresses() == 1);
 		
 	}
 	@AfterMethod
 	public void afterTest() throws InterruptedException {
 		driver.manage().deleteAllCookies();
-		//driver.navigate().refresh();
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 	}
 
 	
 	public void fillInAddressForm(String address, String city, String state, String postalCode, int mobilePhoneNumber, String addressTitle) throws InterruptedException {
-		//addressFormPage.enterFirstName(firstName);
-		//addressFormPage.enterLastName(lastName);
 		addressFormPage.enterAddress(address);
 		addressFormPage.enterCity(city);
 		addressFormPage.selectState(state);
 		addressFormPage.enterPostalCode(postalCode);
 		addressFormPage.enterMobilePhoneNumber(mobilePhoneNumber);
 		addressFormPage.enterAddressTitle(addressTitle);
-		//Thread.sleep(2500);
-		//addressFormPage.clickSaveButton();
 	}
 	public void revertToOldAddress() throws InterruptedException {
-		String address = excelReader.getData("Address tests", 4, 7);
-		String city = excelReader.getData("Address tests", 5, 7);
-		String state = excelReader.getData("Address tests", 6, 7);
-		String postalCode = excelReader.getData("Address tests", 7, 7);
-		int mobilePhoneNumber = Integer.valueOf(excelReader.getData("Address tests", 8, 7));
-		String addressTitle = excelReader.getData("Address tests", 9, 7);
+		address = excelReader.getData("Address tests", 4, 7);
+		city = excelReader.getData("Address tests", 5, 7);
+		state = excelReader.getData("Address tests", 6, 7);
+		postalCode = excelReader.getData("Address tests", 7, 7);
+		mobilePhoneNumber = Integer.valueOf(excelReader.getData("Address tests", 8, 7));
+		addressTitle = excelReader.getData("Address tests", 9, 7);
 		
 		addressFormPage.enterAddress(address);
 		addressFormPage.enterCity(city);

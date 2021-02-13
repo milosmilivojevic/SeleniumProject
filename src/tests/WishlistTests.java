@@ -1,13 +1,12 @@
 package tests;
 
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 
 public class WishlistTests extends TestBase{
 	
@@ -16,7 +15,7 @@ public class WishlistTests extends TestBase{
 		driver.navigate().to("http://automationpractice.com/index.php");
 		Thread.sleep(2000);
 	}
-	//@Test (priority = 0)
+	@Test (priority = 0)
 	public void addWishlist() throws InterruptedException {
 		String wishlistName = excelReader.getData("Wishlist tests", 3, 6);
 		
@@ -27,13 +26,13 @@ public class WishlistTests extends TestBase{
 		Thread.sleep(1500);
 		wishlistPage.clickSaveButton();
 		
-		//Assert.assertEquals(wishlistPage.textForAssert(), wishlistName);
-		wishlistPage.removeLists();
+		Assert.assertEquals(wishlistPage.textForAssert(), wishlistName);
+		
 	}
-	@Test (priority = 1)
+	@Test (priority = 5)
 	public void addMultipleWishlists() throws InterruptedException {
 		String wishlistName = excelReader.getData("Wishlist tests", 3, 6);
-		int numberOfWishlists = 3;
+		int numberOfWishlists = Integer.valueOf(excelReader.getData("Wishlist tests", 8, 6));
 		
 		signIn();
 		myAccountPage.clickMyWishlistButton();
@@ -41,23 +40,23 @@ public class WishlistTests extends TestBase{
 		
 		for (int i = 0; i < numberOfWishlists; i++) {
 			wishlistPage.enterWishlistName(wishlistName+i);
+			Thread.sleep(1000);
 			wishlistPage.clickSaveButton();
+			Thread.sleep(1000);
 		}
 		
-		wishlistPage.enterWishlistName(wishlistName);
-		wishlistPage.clickSaveButton();
-		
-		//Assert.assertEquals(, );
-		wishlistPage.removeLists();
+		Assert.assertTrue(wishlistPage.numberOfWishlists() == numberOfWishlists + 1);
 	}
-	//@Test (priority = 2)
+	@Test (priority = 10)
 	public void removeWishlists() throws InterruptedException {
-		String wishlistName = "lista1";      // excelReader.getData("add wishlist", 5, 8);
-		
-		addWishlist();
-		wishlistPage.enterWishlistName(wishlistName);
-		wishlistPage.clickSaveButton();
+		signIn();
+		myAccountPage.clickMyWishlistButton();
+		Thread.sleep(1500);
 		wishlistPage.removeLists();
+		Thread.sleep(5000);
+		
+		Assert.assertTrue(wishlistPage.numberOfWishlists() == 0);
+		
 	}
 	@AfterMethod
 	public void afterTest() throws InterruptedException {
