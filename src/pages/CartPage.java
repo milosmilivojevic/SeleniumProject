@@ -11,6 +11,8 @@ public class CartPage {
 	WebElement plusButton;
 	WebElement quantity;
 	WebElement emptyCartMessage;
+	WebElement productsQuantityLabel;
+	WebElement product1Name;
 
 	public CartPage(WebDriver driver) {
 		this.driver = driver;
@@ -26,8 +28,13 @@ public class CartPage {
 	public WebElement getEmptyCartMessage() {
 		return driver.findElement(By.className("alert-warning"));
 	}
+	public WebElement getProductsQuantityLabel() {
+		return driver.findElement(By.id("summary_products_quantity"));
+	}
+	public WebElement getProduct1Name() {
+		return driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/div[2]/table/tbody/tr/td[2]/p/a"));
+	}
 
-	
 
 	public void clickPlusButton() {
 		this.getPlusButton().click();
