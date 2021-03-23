@@ -45,7 +45,7 @@ public class IndexPage {
 		return driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[3]/div/div[2]/div[2]/a[1]"));
 	}
 	public WebElement getClosePopupButton() {
-		return driver.findElement(By.xpath("/html/body/div/div[1]/header/div[3]/div/div/div[4]/div[1]/div[1]/span"));
+		return driver.findElement(By.xpath("//*[@class=\"cross\"]"));
 	}
 	public WebElement getProceedToCheckoutButton() {
 		return driver.findElement(By.xpath("//a[@title=\"Proceed to checkout\"]"));
