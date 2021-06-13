@@ -4,9 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class IndexPage {
 	WebDriver driver;
+	WebDriverWait wait = new WebDriverWait(driver, 60);
 	WebElement signInButton;
 	WebElement product1Card;
 	WebElement product2Card;
@@ -24,34 +27,44 @@ public class IndexPage {
 	}
 	
 	public WebElement getSignInButton() {
-		return driver.findElement(By.className("login"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.className("login")));
+		return element;
 	}
 	public WebElement getProduct1Card() {
-		return driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[1]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[1]")));
+		return element;
 	}
 	public WebElement getProduct2Card() {
-		return driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[2]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[2]")));
+		return element;
 	}
 	public WebElement getProduct3Card() {
-		return driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[3]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[3]")));
+		return element;
 	}
 	public WebElement getAddToCartButton1() {
-		return driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[1]/div/div[2]/div[2]/a[1]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[1]/div/div[2]/div[2]/a[1]")));
+		return element;
 	}
 	public WebElement getAddToCartButton2() {
-		return driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[2]/div/div[2]/div[2]/a[1]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[2]/div/div[2]/div[2]/a[1]")));
+		return element;
 	}
 	public WebElement getAddToCartButton3() {
-		return driver.findElement(By.xpath("//*[@id=\"homefeatured\"]/li[3]/div/div[2]/div[2]/a[1]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[3]/div/div[2]/div[2]/a[1]")));
+		return element;
 	}
 	public WebElement getClosePopupButton() {
-		return driver.findElement(By.xpath("//*[@class=\"cross\"]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class=\"cross\"]")));
+		return element;
 	}
 	public WebElement getProceedToCheckoutButton() {
-		return driver.findElement(By.xpath("//a[@title=\"Proceed to checkout\"]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title=\"Proceed to checkout\"]")));
+		return element;
 	}
 	public WebElement getShoppingCartIcon() {
-		return driver.findElement(By.xpath("//a[@title=\"View my shopping cart\"]"));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title=\"View my shopping cart\"]")));
+		return element;
 	}
 	
 	
