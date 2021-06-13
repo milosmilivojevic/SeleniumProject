@@ -43,15 +43,15 @@ public class IndexPage {
 		return element;
 	}
 	public WebElement getAddToCartButton1() {
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[1]/div/div[2]/div[2]/a[1]")));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@id=\"homefeatured\"]//*[text()=\"Add to cart\"])[1]")));
 		return element;
 	}
 	public WebElement getAddToCartButton2() {
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[2]/div/div[2]/div[2]/a[1]")));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@id=\"homefeatured\"]//*[text()=\"Add to cart\"])[2]")));
 		return element;
 	}
 	public WebElement getAddToCartButton3() {
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"homefeatured\"]/li[3]/div/div[2]/div[2]/a[1]")));
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@id=\"homefeatured\"]//*[text()=\"Add to cart\"])[3]")));
 		return element;
 	}
 	public WebElement getClosePopupButton() {
