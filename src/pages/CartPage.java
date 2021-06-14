@@ -22,18 +22,14 @@ public class CartPage {
 	public WebElement getPlusButton() {
 		return driver.findElement(By.className("icon-plus"));
 	}
-	public WebElement getQuantity() {
-		return driver.findElement(By.xpath("//input[contains(@class, 'cart_quantity_input')]"));
-	}
+	public WebElement getQuantity() { return driver.findElement(By.xpath("//input[contains(@class,'cart_quantity_input')]")); }
 	public WebElement getEmptyCartMessage() {
 		return driver.findElement(By.className("alert-warning"));
 	}
 	public WebElement getProductsQuantityLabel() {
 		return driver.findElement(By.id("summary_products_quantity"));
 	}
-	public WebElement getProduct1Name() {
-		return driver.findElement(By.xpath("/html/body/div/div[2]/div/div[3]/div/div[2]/table/tbody/tr/td[2]/p/a"));
-	}
+	public WebElement getProduct1Name() { return driver.findElement(By.xpath("(//*[@class='product-name']/a)[1]")); }
 
 
 	public void clickPlusButton() {
