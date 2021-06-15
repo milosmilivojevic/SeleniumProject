@@ -21,7 +21,6 @@ public class TestBase {
 	
 	WebDriver driver;
 	
-	//Pages
 	
 	IndexPage indexPage;
 	LoginPage loginPage;
