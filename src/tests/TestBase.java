@@ -37,8 +37,7 @@ public class TestBase {
 	@BeforeClass
 	public void beforeClass() throws IOException {
 		
-		System.setProperty("webdriver.chrome.driver",
-				"driver-lib\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","driver-lib\\chromedriver.exe");
 		
 		this.driver = new ChromeDriver();
 		this.indexPage = new IndexPage(driver);
@@ -57,7 +56,6 @@ public class TestBase {
 	public void afterClass() {
 		driver.close();
 	}
-	
 	
 	public void signIn() throws InterruptedException {
 		indexPage.clickSignInButton();
